@@ -177,14 +177,34 @@ body {
   }
 
   .mobile-nav-active .navmenu {
+    position: fixed !important;
+    inset: 0 !important;
     z-index: 9998 !important;
+    background: rgba(33, 37, 41, 0.8) !important;
+    overflow: hidden !important;
+  }
+
+  .mobile-nav-active .navmenu > ul {
+    display: block !important;
+    position: fixed !important;
+    top: 60px !important;
+    left: 20px !important;
+    right: 20px !important;
+    bottom: 20px !important;
+    z-index: 9999 !important;
+    background-color: #fff !important;
+    border-radius: 6px !important;
+    padding: 10px 0 !important;
+    overflow-y: auto !important;
+    width: auto !important;
   }
 
   .mobile-nav-active .mobile-nav-toggle {
-    z-index: 9999 !important;
-    position: absolute !important;
+    z-index: 10000 !important;
+    position: fixed !important;
     top: 15px !important;
     right: 15px !important;
+    color: #fff !important;
   }
 }
 .hero.section {
