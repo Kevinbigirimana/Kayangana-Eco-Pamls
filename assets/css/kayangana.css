@@ -156,9 +156,33 @@ body {
 .mobile-nav-toggle {
   color: #116530 !important;
   font-size: 26px;
+  margin-left: auto;
+  z-index: 10000;
 }
 
-/* ── Hero section offset fix ── */
+/* ── Mobile nav menu styling ── */
+@media (max-width: 1199px) {
+  .header .container-fluid {
+    justify-content: space-between !important;
+  }
+
+  .kep-logo .brand-name {
+    font-size: 14px;
+  }
+
+  .kep-logo-icon {
+    height: 36px;
+    width: 36px;
+  }
+
+  .mobile-nav-active .navmenu {
+    z-index: 10000 !important;
+  }
+
+  .mobile-nav-active .mobile-nav-toggle {
+    z-index: 10001 !important;
+  }
+}
 .hero.section {
   margin-top: 0;
 }
@@ -232,17 +256,6 @@ body {
   height: 3px;
   background: linear-gradient(90deg, #116530 0%, #2ea359 50%, #116530 100%);
   opacity: 0.7;
-}
-
-/* ── Mobile nav menu styling ── */
-  @media (max-width: 1199px) {
-  .kep-logo .brand-name {
-    font-size: 14px;
-  }
-  .kep-logo-icon {
-    height: 36px;
-    width: 36px;
-  }
 }
 
 /* ── Ensure hero carousel images cover properly with fixed header ── */
