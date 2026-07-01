@@ -32,7 +32,7 @@ body {
 .header .container-fluid {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 60px;
   height: 64px;
   display: flex !important;
   align-items: center !important;
@@ -72,7 +72,7 @@ body {
 /* ── Navigation ── */
 @media (min-width: 1200px) {
   .header .navmenu {
-    margin-left: 48px;
+    margin-left: 200px;
     flex: 1;
   }
 
@@ -85,7 +85,7 @@ body {
   }
 
   .navmenu ul li:not(:last-child) {
-    margin-right: 12px;
+    margin-right: 20px;
   }
 
   .navmenu ul li:last-child {
