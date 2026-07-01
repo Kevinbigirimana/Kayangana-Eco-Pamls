@@ -40,11 +40,6 @@ body {
   gap: 0;
 }
 
-.header .navmenu {
-  margin-left: 150px;
-  flex: 1;
-}
-
 /* ── Logo ── */
 .kep-logo {
   display: flex;
@@ -76,6 +71,11 @@ body {
 
 /* ── Navigation ── */
 @media (min-width: 1200px) {
+  .header .navmenu {
+    margin-left: 48px;
+    flex: 1;
+  }
+
   .navmenu ul {
     gap: 2px;
     align-items: center;
