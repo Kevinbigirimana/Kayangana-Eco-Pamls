@@ -9,7 +9,7 @@
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 9999 !important;
+  z-index: 997;
   padding: 0 !important;
   background: rgba(255, 255, 255, 0.97) !important;
   backdrop-filter: blur(12px);
@@ -157,7 +157,8 @@ body {
   color: #116530 !important;
   font-size: 26px;
   margin-left: auto;
-  z-index: 10000;
+  z-index: 9998;
+  position: relative;
 }
 
 /* ── Mobile nav menu styling ── */
@@ -176,11 +177,14 @@ body {
   }
 
   .mobile-nav-active .navmenu {
-    z-index: 10000 !important;
+    z-index: 9998 !important;
   }
 
   .mobile-nav-active .mobile-nav-toggle {
-    z-index: 10001 !important;
+    z-index: 9999 !important;
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important;
   }
 }
 .hero.section {
