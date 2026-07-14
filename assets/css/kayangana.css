@@ -366,3 +366,22 @@ body {
   color: #116530;
   margin-bottom: 0;
 }
+
+.kep-team-linkedin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(17, 101, 48, 0.08);
+  color: #116530;
+  font-size: 15px;
+  margin-top: 8px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.kep-team-linkedin:hover {
+  background: #116530;
+  color: #fff;
+}
