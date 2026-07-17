@@ -107,22 +107,27 @@
           </div>
 
           <div class="col-lg-8">
-            <form action="mailto:kayanganaecopalms@gmail.com" method="post" enctype="text/plain" role="form">
+            <form id="contact-form" role="form" novalidate>
               <div class="row">
                 <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
                 </div>
               </div>
               <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject (e.g. Investment Inquiry, Partnership, General)" required="">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject (e.g. Investment Inquiry, Partnership, General)" required>
               </div>
               <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="6" placeholder="Your message — tell us who you are and how you'd like to connect." required=""></textarea>
+                <textarea class="form-control" name="message" id="message" rows="6" placeholder="Your message — tell us who you are and how you'd like to connect." required></textarea>
               </div>
-              <div class="text-center mt-3"><button type="submit">Send Message</button></div>
+              <div class="my-3">
+                <div id="form-loading" style="display:none; color:#116530;">Sending...</div>
+                <div id="form-error" style="display:none; color:#dc3545;">Something went wrong. Please try again.</div>
+                <div id="form-success" style="display:none; color:#116530;">Your message has been sent. Thank you — we will be in touch soon!</div>
+              </div>
+              <div class="text-center mt-3"><button type="submit" id="submit-btn">Send Message</button></div>
             </form>
           </div>
 
@@ -139,8 +144,8 @@
       <div class="content">
         <div class="container">
           <div class="row g-0">
-            <div class="col-lg-3 col-md-6">
-              <div class="service-item">
+            <div class="col-lg-3 col-md-6 d-flex">
+              <div class="service-item h-100 w-100">
                 <span class="number"><i class="bi bi-graph-up-arrow" style="font-size:40px;"></i></span>
                 <div class="service-item-content">
                   <h3 class="service-heading">Scalable Business Model</h3>
@@ -148,8 +153,8 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-              <div class="service-item">
+            <div class="col-lg-3 col-md-6 d-flex">
+              <div class="service-item h-100 w-100">
                 <span class="number"><i class="bi bi-heart-fill" style="font-size:40px;"></i></span>
                 <div class="service-item-content">
                   <h3 class="service-heading">Profound Social Impact</h3>
@@ -157,8 +162,8 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-              <div class="service-item">
+            <div class="col-lg-3 col-md-6 d-flex">
+              <div class="service-item h-100 w-100">
                 <span class="number"><i class="bi bi-mortarboard-fill" style="font-size:40px;"></i></span>
                 <div class="service-item-content">
                   <h3 class="service-heading">Ethical Leadership Team</h3>
@@ -166,8 +171,8 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-              <div class="service-item">
+            <div class="col-lg-3 col-md-6 d-flex">
+              <div class="service-item h-100 w-100">
                 <span class="number"><i class="bi bi-globe" style="font-size:40px;"></i></span>
                 <div class="service-item-content">
                   <h3 class="service-heading">Market-Validated Opportunity</h3>
@@ -270,6 +275,49 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/js/main.js"></script>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    emailjs.init({
+      publicKey: '_2bs3T2FHC4kMnZvi'
+    });
+
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const loading = document.getElementById('form-loading');
+      const error   = document.getElementById('form-error');
+      const success = document.getElementById('form-success');
+      const btn     = document.getElementById('submit-btn');
+
+      loading.style.display = 'block';
+      error.style.display   = 'none';
+      success.style.display = 'none';
+      btn.disabled = true;
+
+      const params = {
+        name:    document.getElementById('name').value,
+        email:   document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+      };
+
+      emailjs.send('service_ivf90ze', 'template_9x8ypoj', params)
+        .then(function() {
+          loading.style.display = 'none';
+          success.style.display = 'block';
+          document.getElementById('contact-form').reset();
+          btn.disabled = false;
+        }, function(err) {
+          loading.style.display = 'none';
+          error.style.display   = 'block';
+          error.textContent = err?.text || err?.message || 'Something went wrong. Please try again.';
+          btn.disabled = false;
+          console.error('EmailJS error:', err);
+        });
+    });
+  </script>
 
 </body>
 </html>
